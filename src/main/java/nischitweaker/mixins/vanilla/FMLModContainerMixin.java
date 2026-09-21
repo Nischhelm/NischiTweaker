@@ -1,4 +1,4 @@
-package nischimixins.mixins.vanilla;
+package nischitweaker.mixins.vanilla;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraftforge.fml.common.FMLModContainer;
@@ -18,7 +18,7 @@ public abstract class FMLModContainerMixin {
             at = @At(value = "FIELD", target = "Lnet/minecraftforge/fml/common/versioning/DependencyParser$DependencyInfo;requirements:Ljava/util/Set;"),
             remap = false
     )
-    private Set<ArtifactVersion> nischimixins_removeCATDependency(Set<ArtifactVersion> original) {
+    private Set<ArtifactVersion> nischitweaker_removeCATDependency(Set<ArtifactVersion> original) {
         if (this.getModId().equals("zenutils"))
             original.removeIf(vers -> vers.getLabel().contains("configanytime"));
         return original;

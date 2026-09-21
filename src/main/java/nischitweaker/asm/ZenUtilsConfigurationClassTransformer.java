@@ -1,4 +1,4 @@
-package nischimixins.asm;
+package nischitweaker.asm;
 
 import meldexun.asmutil2.ASMUtil;
 import meldexun.asmutil2.HashMapClassNodeClassTransformer;

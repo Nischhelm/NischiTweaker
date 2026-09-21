@@ -1,4 +1,4 @@
-package nischimixins.config;
+package nischitweaker.config;
 
 import meldexun.betterconfig.api.BetterConfig;
 import meldexun.betterconfig.api.BetterConfigManager;
@@ -6,8 +6,8 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import nischimixins.Tags;
-import nischimixins.config.folders.MixinToggles;
+import nischitweaker.Tags;
+import nischitweaker.config.folders.MixinToggles;
 
 @BetterConfig(
 		modid = Tags.MODID,

@@ -1,18 +1,18 @@
-package nischimixins;
+package nischitweaker;
 
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import nischimixins.asm.ZenUtilsConfigurationClassTransformer;
+import nischitweaker.asm.ZenUtilsConfigurationClassTransformer;
 import org.apache.commons.lang3.StringUtils;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 
 import java.util.Map;
 
 @IFMLLoadingPlugin.MCVersion("1.12.2")
-public class NischiMixinsPlugin implements IFMLLoadingPlugin {
+public class NischiTweakerPlugin implements IFMLLoadingPlugin {
 
-	public NischiMixinsPlugin() {
+	public NischiTweakerPlugin() {
 		Launch.classLoader.registerTransformer(ZenUtilsConfigurationClassTransformer.class.getName());
 	}
 

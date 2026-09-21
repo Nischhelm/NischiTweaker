@@ -1,7 +1,7 @@
 {
   "required": true,
-  "package": "nischimixins.mixins",
-  "refmap": "mixins.nischimixins.refmap.json",
+  "package": "nischitweaker.mixins",
+  "refmap": "mixins.nischitweaker.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
