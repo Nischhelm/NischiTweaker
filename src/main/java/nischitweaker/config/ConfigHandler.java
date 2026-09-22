@@ -7,7 +7,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import nischitweaker.Tags;
-import nischitweaker.config.folders.MixinToggles;
+import nischitweaker.config.folders.ZenUtilsConfig;
 
 @BetterConfig(
 		modid = Tags.MODID,
@@ -19,7 +19,7 @@ public class ConfigHandler {
 	
 	@Config.Comment("Mixin Toggles")
 	@Config.Name("Mixin Toggles")
-	public static MixinToggles mixins = new MixinToggles();
+	public static ZenUtilsConfig mixins = new ZenUtilsConfig();
 
 	@Mod.EventBusSubscriber
 	private static class EventHandler{

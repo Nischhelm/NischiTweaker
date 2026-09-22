@@ -61,10 +61,10 @@ dependencies {
 
     implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
     implementation fg.deobf("curse.maven:betterconfig-${betterconfig_version}")
-
-    implementation fg.deobf("curse.maven:zenutil-401178:8385068")
-
     implementation 'io.github.meldexun:asmutil:2.8.1'
+
+    compileOnly fg.deobf("curse.maven:zenutil-401178:8385068")
+    implementation fg.deobf("curse.maven:champions-307152:3177947")
 }
 
 mixin {
