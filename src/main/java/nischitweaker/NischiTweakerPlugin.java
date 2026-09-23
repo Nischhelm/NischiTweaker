@@ -1,5 +1,6 @@
 package nischitweaker;
 
+import fermiumbooter.util.FermiumJarScanner;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -14,8 +15,11 @@ import java.util.Map;
 public class NischiTweakerPlugin implements IFMLLoadingPlugin {
 
 	public NischiTweakerPlugin() {
-		Launch.classLoader.registerTransformer(PatchConfigClassTransformer.class.getName());
-		Launch.classLoader.registerTransformer(ConfigurationClassTransformer.class.getName());
+		if(FermiumJarScanner.isModPresent("zenutils")) {
+			Launch.classLoader.registerTransformer(ConfigurationClassTransformer.class.getName());
+			if(FermiumJarScanner.isModPresent("baubleye"))
+				Launch.classLoader.registerTransformer(PatchConfigClassTransformer.class.getName());
+		}
 	}
 
 	@Override
