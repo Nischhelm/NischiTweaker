@@ -65,6 +65,7 @@ dependencies {
 
     compileOnly fg.deobf("curse.maven:zenutil-401178:8385068")
     implementation fg.deobf("curse.maven:champions-307152:3177947")
+    implementation fg.deobf("curse.maven:baubley-elytra-658616:8211161")
 }
 
 mixin {

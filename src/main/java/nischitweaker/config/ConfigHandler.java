@@ -7,6 +7,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import nischitweaker.Tags;
+import nischitweaker.config.folders.BaubleyElytraConfig;
 import nischitweaker.config.folders.ChampionsConfig;
 import nischitweaker.config.folders.ZenUtilsConfig;
 
@@ -17,10 +18,12 @@ import nischitweaker.config.folders.ZenUtilsConfig;
 		lowerCaseCategories = false
 )
 public class ConfigHandler {
-	
-	@Config.Comment("Mixin Toggles")
-	@Config.Name("Mixin Toggles")
+
+	@Config.Name("ZenUtils")
 	public static ZenUtilsConfig zenutils = new ZenUtilsConfig();
+
+	@Config.Name("Baubley Elytra")
+	public static BaubleyElytraConfig baubleyElytra = new BaubleyElytraConfig();
 
 	@Config.Name("Champions")
 	public static ChampionsConfig champions = new ChampionsConfig();

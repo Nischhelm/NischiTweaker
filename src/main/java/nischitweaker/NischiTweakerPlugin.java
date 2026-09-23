@@ -3,6 +3,7 @@ package nischitweaker;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import nischitweaker.asm.baubleyelytra.PatchConfigClassTransformer;
 import nischitweaker.asm.zenutils.ConfigurationClassTransformer;
 import org.apache.commons.lang3.StringUtils;
 import org.spongepowered.asm.mixin.MixinEnvironment;
@@ -13,6 +14,7 @@ import java.util.Map;
 public class NischiTweakerPlugin implements IFMLLoadingPlugin {
 
 	public NischiTweakerPlugin() {
+		Launch.classLoader.registerTransformer(PatchConfigClassTransformer.class.getName());
 		Launch.classLoader.registerTransformer(ConfigurationClassTransformer.class.getName());
 	}
 
