@@ -20,7 +20,7 @@ public class ConfigHandler {
 	
 	@Config.Comment("Mixin Toggles")
 	@Config.Name("Mixin Toggles")
-	public static ZenUtilsConfig mixins = new ZenUtilsConfig();
+	public static ZenUtilsConfig zenutils = new ZenUtilsConfig();
 
 	@Config.Name("Champions")
 	public static ChampionsConfig champions = new ChampionsConfig();

@@ -11,5 +11,5 @@ public class ZenUtilsConfig {
     @Config.Name("Remove ConfigAnytime Dependency (MixinToggle)")
     @MixinConfig.MixinToggle(earlyMixin = "mixins.nischitweaker.zenutils.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "zenutils", desired = true, targetVersionRange = "(,1.27.5]", reason = "ZenUtils compat requires ZenUtils")
-    public boolean enableZenUtilsMixin = true;
+    public boolean removeConfigAnytimeDependency = true;
 }

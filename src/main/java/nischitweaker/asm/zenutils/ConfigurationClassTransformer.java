@@ -4,6 +4,7 @@ import meldexun.asmutil2.ASMUtil;
 import meldexun.asmutil2.HashMapClassNodeClassTransformer;
 import meldexun.asmutil2.IClassTransformerRegistry;
 import net.minecraft.launchwrapper.IClassTransformer;
+import nischitweaker.config.ConfigHandler;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.InsnNode;
@@ -15,6 +16,7 @@ public class ConfigurationClassTransformer extends HashMapClassNodeClassTransfor
     protected void registerTransformers(IClassTransformerRegistry registry) {
         //Replace ConfigAnytime.register(class) by zenutils internal
         // ConfigAnytimeAnytime.register(class, null)
+        if(!ConfigHandler.zenutils.removeConfigAnytimeDependency) return;
         registry.add("youyihj.zenutils.impl.core.Configuration", "<clinit>", ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS, method -> {
             MethodInsnNode register = ASMUtil.first(method).methodInsn("register").find();
             ASMUtil.replace(method, register, ASMUtil.listOf(
