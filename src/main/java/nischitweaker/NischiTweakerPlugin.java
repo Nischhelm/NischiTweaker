@@ -18,7 +18,7 @@ import java.util.Map;
 public class NischiTweakerPlugin implements IFMLLoadingPlugin {
 
 	public NischiTweakerPlugin() {
-		if(FermiumJarScanner.isModPresent("zenutils")) {
+		if(FermiumJarScanner.isModPresent("zenutils")) { //TODO: idk why fermiumbooter doesnt have a public access to mixintoggles but technically this should both only apply for zenutils < 1.28.7. will do that in next fb release
 			Launch.classLoader.registerTransformer(ConfigAnytimeClassTransformer.class.getName());
 			Launch.classLoader.registerTransformer(ZenUtilsShareTransformer.class.getName());
 		}
