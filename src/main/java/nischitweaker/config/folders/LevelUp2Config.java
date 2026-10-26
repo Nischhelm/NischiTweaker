@@ -15,6 +15,7 @@ public class LevelUp2Config {
             modid = "levelup2",
             targetVersionRange = "(,1.1.23]",
             desired = true,
+            warnIngame = false,
             reason = "Requires mod to properly function"
     )
     public boolean fixStealth = true;
