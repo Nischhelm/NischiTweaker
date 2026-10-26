@@ -12,4 +12,13 @@ public class QuarkConfig {
     @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.autoreglib.shulkerdropoff.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "autoreglib", desired = true, warnIngame = false, reason = "Compat for Quark/AutoRegLib")
     public boolean shulkerDropoffFix = true;
+
+    @Config.Comment({
+            "Makes Quark load its modules in a fixed order.",
+            "This fixes block/item registration order, otherwise Quark would change it for every new world (or when losing/breaking level.dat)"
+    })
+    @Config.Name("Deterministic Registration (MixinToggle)")
+    @MixinConfig.MixinToggle(earlyMixin = "mixin.nischitweaker.quark.deterministicregistration.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "quark", desired = true, warnIngame = false, reason = "Compat for Quark")
+    public boolean deterministicRegistration = true;
 }
