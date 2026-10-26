@@ -1,7 +1,10 @@
 package nischitweaker.config.folders;
 
+import fermiumbooter.annotations.MixinConfig;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.Tags;
 
+@MixinConfig(name = Tags.MODID)
 public class VanillaConfig {
     @Config.Comment({
             "Increases frost walker frosted size by this amount. Big multipliers can be laggy.",
@@ -18,6 +21,15 @@ public class VanillaConfig {
     })
     @Config.Name("New World Difficulty")
     public Difficulty newWorldDifficulty = Difficulty.NORMAL;
+
+    @Config.Comment({
+            "If level.dat or level.dat_old fail to load, keep a copy of them as level.dat_corrupted_<date> / level.dat_old_corrupted_<date>.",
+            "Without this, a fresh level.dat gets created and the corrupted files are rotated away on the next saves"
+    })
+    @Config.Name("Backup Corrupted level.dat (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(earlyMixin = "mixin.nischitweaker.vanilla.corruptedleveldat.json", defaultValue = true)
+    public boolean backupCorruptedLevelDat = true;
 
     //Own enum so the config doesn't load EnumDifficulty during coremod construction (obfuscated names aren't remapped yet)
     public enum Difficulty {
