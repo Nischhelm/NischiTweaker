@@ -18,6 +18,7 @@ public class ModContainerConfig {
     private void initRemovedDependencies() {
         removedDependencies.put("zenutils", new ArrayList<>(Collections.singletonList("configanytime")));
         removedDependencies.put("distanthorizons", new ArrayList<>(Collections.singletonList("mixinbooter")));
+        removedDependencies.put("universaltweaks", new ArrayList<>(Collections.singletonList("configanytime")));
     }
 
     public ModContainerConfig() {

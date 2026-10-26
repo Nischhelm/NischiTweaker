@@ -16,6 +16,10 @@ public class ZenUtilsConfig {
     @Config.Name("ConfigAnytime Dependency Replacements (ASM Toggle)")
     public List<String> configAnytimeClassPatches = new ArrayList<>(Arrays.asList(
             "youyihj.zenutils.impl.core.Configuration",
-            "git.jbredwards.baubleye.PatchConfigs"
+            "git.jbredwards.baubleye.PatchConfigs",
+            "mod.acgaming.universaltweaks.config.UTConfigGeneral",
+            "mod.acgaming.universaltweaks.config.UTConfigTweaks",
+            "mod.acgaming.universaltweaks.config.UTConfigBugfixes",
+            "mod.acgaming.universaltweaks.config.UTConfigMods"
     ));
 }

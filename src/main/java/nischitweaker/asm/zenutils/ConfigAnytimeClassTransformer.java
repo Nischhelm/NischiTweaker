@@ -4,6 +4,7 @@ import meldexun.asmutil2.ASMUtil;
 import meldexun.asmutil2.HashMapClassNodeClassTransformer;
 import meldexun.asmutil2.IClassTransformerRegistry;
 import net.minecraft.launchwrapper.IClassTransformer;
+import nischitweaker.Tags;
 import nischitweaker.config.ConfigHandler;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -18,12 +19,16 @@ public class ConfigAnytimeClassTransformer extends HashMapClassNodeClassTransfor
         // ConfigAnytimeAnytime.register(class, null)
         for (String className : ConfigHandler.zenUtils.configAnytimeClassPatches) {
             registry.add(className, "<clinit>", ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS, method -> {
-                MethodInsnNode register = ASMUtil.first(method).methodInsn("register").find();
-                if (register != null) {
-                    ASMUtil.replace(method, register, ASMUtil.listOf(
-                            new InsnNode(Opcodes.ACONST_NULL),
-                            new MethodInsnNode(Opcodes.INVOKESTATIC, "youyihj/zenutils/impl/config/ConfigAnytimeAnytime", "register", "(Ljava/lang/Class;Lnet/minecraftforge/fml/common/ModMetadata;)V", false)
-                    ));
+                try {
+                    MethodInsnNode register = ASMUtil.first(method).methodInsn("register").find();
+                    if (register != null) {
+                        ASMUtil.replace(method, register, ASMUtil.listOf(
+                                new InsnNode(Opcodes.ACONST_NULL),
+                                new MethodInsnNode(Opcodes.INVOKESTATIC, "youyihj/zenutils/impl/config/ConfigAnytimeAnytime", "register", "(Ljava/lang/Class;Lnet/minecraftforge/fml/common/ModMetadata;)V", false)
+                        ));
+                    }
+                } catch (Exception e) {
+                    Tags.LOGGER.warn("Unable to modify class {} to not use ConfigAnytime, skipping. Error: {}", className, e.getMessage());
                 }
             });
         }

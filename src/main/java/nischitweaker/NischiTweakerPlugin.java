@@ -27,10 +27,10 @@ public class NischiTweakerPlugin implements IFMLLoadingPlugin {
 			} catch(ReflectiveOperationException ignored) {}
 		}
 
-		if(CompatUtil.isInRange("zenutils", "(1.26.0,1.27.5]")) {
+		if(CompatUtil.isInRange("zenutils", "[1.25.0,)"))
 			Launch.classLoader.registerTransformer(ConfigAnytimeClassTransformer.class.getName());
+		if(CompatUtil.isInRange("zenutils", "[1.26.0,1.28.7)"))
 			Launch.classLoader.registerTransformer(ZenUtilsShareTransformer.class.getName());
-		}
 		if(FermiumJarScanner.isModPresent("distanthorizons"))
 			Launch.classLoader.registerTransformer(DistantHorizonsMixinConnectorTransformer.class.getName());
 
