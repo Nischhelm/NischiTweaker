@@ -59,19 +59,16 @@ public class LocksConfig {
     );
 
     public static class LockData {
-        @Config.Comment("Number of pins of the lock.")
         @Config.Name("Pins")
         @Config.RangeInt(min = 1, max = 15)
         @Config.SlidingOption
         @Order(0)
         public int pins = 8;
 
-        @Config.Comment("Enchantability of the lock, higher means better enchantments when enchanting it")
         @Config.Name("Enchantability")
         @Order(1)
         public int enchantability = 10;
 
-        @Config.Comment("Blast resistance of a block while it is locked with this lock. The higher of this and the block's own resistance is used.")
         @Config.Name("Blast Resistance")
         @Order(2)
         public float resistance = 10.0F;
