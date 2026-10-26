@@ -20,7 +20,7 @@ public class ConfigAnytimeClassTransformer extends HashMapClassNodeClassTransfor
         for (String className : ConfigHandler.zenUtils.configAnytimeClassPatches) {
             registry.add(className, "<clinit>", ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS, method -> {
                 try {
-                    MethodInsnNode register = ASMUtil.first(method).methodInsn("register").find();
+                    MethodInsnNode register = ASMUtil.first(method).methodInsn("com/cleanroommc/configanytime/ConfigAnytime","register", "(Ljava/lang/Class;)V").find();
                     if (register != null) {
                         ASMUtil.replace(method, register, ASMUtil.listOf(
                                 new InsnNode(Opcodes.ACONST_NULL),
