@@ -12,7 +12,7 @@ public class InControlConfig {
     })
     @Config.Name("Fix mod rules (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.incontrol.modrules.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.incontrol.modrules.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "incontrol", modName = "InControl", desired = true, warnIngame = false, reason = "Fix for InControl")
     public boolean fixGettingModid = true;
 }

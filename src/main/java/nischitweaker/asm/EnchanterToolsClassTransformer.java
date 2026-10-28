@@ -1,9 +1,9 @@
 package nischitweaker.asm;
 
+import fermiumbooter.util.FermiumJarScanner;
 import meldexun.asmutil2.HashMapClassNodeClassTransformer;
 import meldexun.asmutil2.IClassTransformerRegistry;
 import net.minecraft.launchwrapper.IClassTransformer;
-import nischitweaker.CompatUtil;
 import nischitweaker.config.ConfigHandler;
 import org.objectweb.asm.ClassWriter;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,7 +14,7 @@ public class EnchanterToolsClassTransformer extends HashMapClassNodeClassTransfo
     @Override
     protected void registerTransformers(IClassTransformerRegistry registry) {
         // Remove the @Inject enchantertools$preventNegativePower from MixinEnchantmentHelper so mixin doesn't apply it
-        if(ConfigHandler.enchanterTools.fixMinEnchantLvl && CompatUtil.isInRange("enchanter_tools", "[1.1.1a]"))
+        if(ConfigHandler.enchanterTools.fixMinEnchantLvl && FermiumJarScanner.isModVersionInRange("enchanter_tools", "[1.1.1a]"))
             registry.add("com.sirsquidly.enchanter_tools.mixin.MixinEnchantmentHelper", ClassWriter.COMPUTE_FRAMES, classNode -> {
                 classNode.methods.removeIf(method ->
                         method.name.equals("enchantertools$preventNegativePower") &&

@@ -1,9 +1,17 @@
 package nischitweaker.config.folders;
 
+import fermiumbooter.annotations.MixinConfig;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.MixinUtil;
+import nischitweaker.Tags;
+import nischitweaker.config.ConfigHandler;
 
-//@MixinConfig(name = Tags.MODID)
+@MixinConfig(name = Tags.MODID, classloadEarly = true)
 public class InfernalMobsConfig {
+
+    static {
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.infernalmobs.parasitechance.json", () -> ConfigHandler.infernalmobs.infernalParasiteChanceIncrease, "infernalmobs", "srparasites", "srpmixins");
+    }
 
     @Config.Comment({
             "Infernal spawn chance increase for parasites in phase 9+ (0.5 = 50% increase)",

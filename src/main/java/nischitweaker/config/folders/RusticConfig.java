@@ -13,7 +13,7 @@ public class RusticConfig {
     })
     @Config.Name("Hopper go Brrew (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.rustic.hoppergobrrew.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.rustic.hoppergobrrew.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "rustic", desired = true, warnIngame = false, reason = "Compat for Rustic")
     public boolean hopperGoBrrew = true;
 }

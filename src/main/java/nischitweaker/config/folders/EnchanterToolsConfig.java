@@ -3,10 +3,18 @@ package nischitweaker.config.folders;
 import fermiumbooter.annotations.MixinConfig;
 import meldexun.betterconfig.api.Order;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.MixinUtil;
 import nischitweaker.Tags;
+import nischitweaker.config.ConfigHandler;
 
-@MixinConfig(name = Tags.MODID)
+@MixinConfig(name = Tags.MODID, classloadEarly = true)
 public class EnchanterToolsConfig {
+
+    static {
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.enchantertools.inkwell.early.json", () -> ConfigHandler.enchanterTools.inkwellReplaceChance, "enchanter_tools");
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.enchantertools.comprehension.json", () -> ConfigHandler.enchanterTools.comprehensionChance, "enchanter_tools");
+    }
+
     @Config.Comment({
             "Chance to replace enchanted book trades with enchanted inkwell trades (with max ench lvl) on librarians.",
             "Set to 0 to disable the mixin (requires restart)."
@@ -20,7 +28,7 @@ public class EnchanterToolsConfig {
     @Config.Comment("Makes Comprehension scale xp gains by +x% per lvl instead of scaling as x1.5, x3, x4.5 etc. Also allows to set a chance to get it.")
     @Config.Name("Modify Comprehension (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.enchantertools.comprehension.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.enchantertools.comprehension.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "enchanter_tools", targetVersionRange = "(,1.1.1a]", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
     @Order(2)
     public boolean modifyComprehensionScaling = true;
@@ -45,7 +53,7 @@ public class EnchanterToolsConfig {
     @Config.Comment("Adds a usage falloff system to the pondering orb (repeated use causes nausea/fear).")
     @Config.Name("Pondering Orb Falloff (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.enchantertools.ponderingorb.falloff.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.enchantertools.ponderingorb.falloff.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "enchanter_tools", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
     @Order(5)
     public boolean ponderingOrbFalloff = true;
@@ -53,7 +61,7 @@ public class EnchanterToolsConfig {
     @Config.Comment("Makes the Pondering Orb drain XP points instead of levels.")
     @Config.Name("Pondering Orb Uses XP (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.enchantertools.ponderingorb.usexp.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.enchantertools.ponderingorb.usexp.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "enchanter_tools", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
     @MixinConfig.CompatHandling(modid = "reskillable", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools uses Reskillable method")
     @Order(6)
@@ -62,7 +70,7 @@ public class EnchanterToolsConfig {
     @Config.Comment("Makes Inkwells added to loot pools be unenchanted.")
     @Config.Name("Loot Inkwells Unenchanted (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.enchantertools.inkwell.loot.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.enchantertools.inkwell.loot.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "enchanter_tools", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
     @Order(7)
     public boolean disableInkwellLoot = true;
@@ -70,7 +78,7 @@ public class EnchanterToolsConfig {
     @Config.Comment("Fixes a bug in EnchanterTools 1.1.1a making enchanting with no bookshelves impossible for some items.")
     @Config.Name("Fix Min Enchanting Lvl (Mixin & ASM Toggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(earlyMixin = "mixin.nischitweaker.enchantertools.minenchlvl.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.enchantertools.minenchlvl.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "enchanter_tools", targetVersionRange = "1.1.1a", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
     @Order(8)
     public boolean fixMinEnchantLvl = true;

@@ -4,13 +4,22 @@ import com.google.common.collect.ImmutableMap;
 import fermiumbooter.annotations.MixinConfig;
 import meldexun.betterconfig.api.Order;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.MixinUtil;
 import nischitweaker.Tags;
+import nischitweaker.config.ConfigHandler;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@MixinConfig(name = Tags.MODID)
+@MixinConfig(name = Tags.MODID, classloadEarly = true)
 public class LocksConfig {
+
+    static {
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.locks.lockpickingpitch.json", () -> Math.abs(ConfigHandler.locks.lockPickingPitchMultiplier - 1.25F) > 1e-3, "locks");
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.locks.lockpickstrengths.json", () -> ConfigHandler.locks.lockPickStrengths.keySet(), "locks");
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.locks.lockstats.json", () -> ConfigHandler.locks.lockStats.keySet(), "locks");
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.locks.devgetitems.early.json", MixinUtil::isDev, "locks");
+    }
 
     @Config.Comment({
             "Lock picking close-to-fail pitch multiplier",

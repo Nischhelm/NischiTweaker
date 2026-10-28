@@ -10,7 +10,7 @@ public class FermiumMixinsConfig {
 
     @Config.Comment("Configure Bountiful Baubles Broken Heart behavior")
     @Config.Name("Broken Heart Config (MixinToggle)")
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.fermiummixins.brokenheart.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.fermiummixins.brokenheart.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "fermiummixins", desired = true, warnIngame = false, reason = "Compat for FermiumMixins")
     @MixinConfig.CompatHandling(modid = "bountifulbaubles", desired = true, warnIngame = false, reason = "Compat for Bountiful Baubles")
     @Order(0)
@@ -30,7 +30,7 @@ public class FermiumMixinsConfig {
 
     @Config.Comment("Configure Reskillable Undershirt behavior")
     @Config.Name("Undershirt Config (MixinToggle)")
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.fermiummixins.undershirt.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.fermiummixins.undershirt.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "fermiummixins", desired = true, warnIngame = false, reason = "Compat for FermiumMixins")
     @MixinConfig.CompatHandling(modid = "reskillable", desired = true, warnIngame = false, reason = "Compat for Reskillable")
     @Order(3)

@@ -11,7 +11,7 @@ import nischitweaker.features.GreaterXPTome;
         version = Tags.VERSION,
         name = Tags.NAME,
         dependencies =
-                "required-after:fermiumbooter@[1.5.3,);" +
+                "required-after:fermiumbooter@[1.6.0,);" +
                 "required:betterconfig@[1.3.0,)",
         acceptableRemoteVersions = "*"
 )

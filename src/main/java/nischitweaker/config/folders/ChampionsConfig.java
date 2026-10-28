@@ -1,9 +1,19 @@
 package nischitweaker.config.folders;
 
+import fermiumbooter.annotations.MixinConfig;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.MixinUtil;
+import nischitweaker.Tags;
+import nischitweaker.config.ConfigHandler;
 
-//@MixinConfig(name = Tags.MODID)
+@MixinConfig(name = Tags.MODID, classloadEarly = true)
 public class ChampionsConfig {
+
+    static {
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.champions.dmgscaling.json", () -> ConfigHandler.champions.flatDamageAmount, "champions");
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.champions.parasitechance.json", () -> ConfigHandler.champions.championParasiteChanceIncrease, "champions", "srparasites", "srpmixins");
+    }
+
     @Config.Comment({
             "Champions will not be able to get more added damage than this value times the growthFactor of their rank.",
             "Example: A 5 star with growthFactor of 15 wont get more than +750 dmg.",

@@ -1,13 +1,21 @@
 package nischitweaker.config.folders;
 
 import com.google.common.collect.ImmutableMap;
+import fermiumbooter.annotations.MixinConfig;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.MixinUtil;
+import nischitweaker.Tags;
+import nischitweaker.config.ConfigHandler;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-//@MixinConfig(name = Tags.MODID)
+@MixinConfig(name = Tags.MODID, classloadEarly = true)
 public class XPTomeConfig {
+
+    static {
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.xptome.greatertome.json", () -> ConfigHandler.xptome.additionalTomes.keySet(), "xpbook");
+    }
 
     @Config.Comment({
             "Adds more XP Tomes with the given names and xp storage abilities.",

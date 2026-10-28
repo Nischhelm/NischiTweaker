@@ -10,7 +10,7 @@ public class SpartanShieldsConfig {
     @Config.Comment("Fixes a potential exploit in Spartan Shields")
     @Config.Name("Exploit Fix (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.spartanshields.exploitfix.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.spartanshields.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "spartanshields", desired = true, warnIngame = false, reason = "Compat for Spartan Shields")
     public boolean exploitFix = true;
 }

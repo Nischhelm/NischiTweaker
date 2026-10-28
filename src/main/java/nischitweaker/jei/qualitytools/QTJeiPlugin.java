@@ -14,7 +14,7 @@ import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import nischitweaker.CompatUtil;
+import nischitweaker.MixinUtil;
 import nischitweaker.Tags;
 
 import java.io.File;
@@ -167,7 +167,7 @@ public class QTJeiPlugin implements IModPlugin {
     //Returns the class that implements getIsRepairable for the given item class, or null if it can't be found
     private static Class<?> getRepairableDeclarer(Class<?> itemClass) {
         try {
-            return itemClass.getMethod(CompatUtil.isDev() ? "getIsRepairable" : "func_82789_a", ItemStack.class, ItemStack.class).getDeclaringClass();
+            return itemClass.getMethod(MixinUtil.isDev() ? "getIsRepairable" : "func_82789_a", ItemStack.class, ItemStack.class).getDeclaringClass();
         } catch (NoSuchMethodException e) {
             return null;
         }

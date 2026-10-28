@@ -12,7 +12,7 @@ public class BountifulBaublesConfig {
             "In RLCraft this happens when changing backpack colors."
     })
     @Config.Name("Fix Crafting Changing Modifier (MixinToggle)")
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.bountifulbaubles.craftingmodifierfix.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.bountifulbaubles.craftingmodifierfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "bountifulbaubles", desired = true, warnIngame = false, reason = "Compat for Bountiful Baubles")
     public boolean craftModifierFix = true;
 }

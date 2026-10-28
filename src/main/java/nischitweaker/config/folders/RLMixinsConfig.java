@@ -9,7 +9,7 @@ public class RLMixinsConfig {
 
     @Config.Comment("Reduce nausea movement penalty")
     @Config.Name("Nausea Reduction (MixinToggle)")
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.rlmixins.nauseareduction.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.rlmixins.nauseareduction.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "rlmixins", desired = true, warnIngame = false, reason = "Compat for RLMixins")
     public boolean nauseaReduction = true;
 }

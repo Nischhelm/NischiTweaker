@@ -2,13 +2,19 @@ package nischitweaker.config.folders;
 
 import fermiumbooter.annotations.MixinConfig;
 import net.minecraftforge.common.config.Config;
+import nischitweaker.MixinUtil;
 import nischitweaker.Tags;
+import nischitweaker.config.ConfigHandler;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@MixinConfig(name = Tags.MODID)
+@MixinConfig(name = Tags.MODID, classloadEarly = true)
 public class GlobalGameRulesConfig {
+
+    static {
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.globalgamerules.appliedrules.json", () -> ConfigHandler.globalgamerules.appliedGameRules, "globalgamerules");
+    }
 
     @Config.Comment({
             "Only apply and save Global GameRules on the server overworld instead of every dimension and client world",
@@ -16,7 +22,7 @@ public class GlobalGameRulesConfig {
     })
     @Config.Name("Only Server Overworld (MixinToggle)")
     @Config.RequiresMcRestart
-    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.globalgamerules.serveroverworldonly.json", defaultValue = true)
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.globalgamerules.serveroverworldonly.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "globalgamerules", desired = true, warnIngame = false, reason = "Compat for Global GameRules")
     public boolean onlyServerOverworld = true;
 
