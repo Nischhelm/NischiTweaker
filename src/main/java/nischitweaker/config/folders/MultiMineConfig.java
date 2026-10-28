@@ -8,7 +8,7 @@ import nischitweaker.Tags;
 public class MultiMineConfig {
 
     @Config.Comment("Fixes a potential exploit in Multi Mine")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: Multi Mine (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.multimine.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "multimine", desired = true, warnIngame = false, reason = "Compat for Multi Mine")

@@ -8,7 +8,7 @@ import nischitweaker.Tags;
 public class BattleTowersConfig {
 
     @Config.Comment("Fixes a potential exploit in Battle Towers")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: Battle Towers (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.battletowers.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "battletowers", desired = true, warnIngame = false, reason = "Compat for Battle Towers")

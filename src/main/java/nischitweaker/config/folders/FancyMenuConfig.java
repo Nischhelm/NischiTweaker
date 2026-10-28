@@ -8,7 +8,7 @@ import nischitweaker.Tags;
 public class FancyMenuConfig {
 
     @Config.Comment("Fixes a potential exploit in FancyMenu")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: FancyMenu (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.fancymenu.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "fancymenu", desired = true, warnIngame = false, reason = "Compat for FancyMenu")

@@ -20,7 +20,7 @@ public class IceAndFireConfig {
     public boolean cockatriceTameEvent = true;
 
     @Config.Comment("Fixes a potential exploit in Ice and Fire")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: Ice and Fire (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.iceandfire.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "iceandfire", desired = true, warnIngame = false, reason = "Compat for Ice and Fire")

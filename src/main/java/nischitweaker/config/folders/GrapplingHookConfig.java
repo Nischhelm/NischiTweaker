@@ -19,7 +19,7 @@ public class GrapplingHookConfig {
     public boolean enderStaffCooldown = true;
 
     @Config.Comment("Fixes a potential exploit in Grappling Hook Mod")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: Grappling Hook Mod (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.grapplinghook.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "grapplemod", desired = true, warnIngame = false, reason = "Compat for Grappling Hook Mod")

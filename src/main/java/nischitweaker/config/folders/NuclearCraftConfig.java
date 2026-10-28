@@ -8,7 +8,7 @@ import nischitweaker.Tags;
 public class NuclearCraftConfig {
 
     @Config.Comment("Fixes a potential exploit in NuclearCraft")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: NuclearCraft (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.nuclearcraft.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "nuclearcraft", modName = "NuclearCraft", desired = true, warnIngame = false, reason = "Compat for NuclearCraft")

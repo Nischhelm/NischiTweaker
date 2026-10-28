@@ -23,7 +23,7 @@ public class QuarkConfig {
     public boolean deterministicRegistration = true;
 
     @Config.Comment("Fixes a potential exploit in Quark")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: Quark (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.quark.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "quark", desired = true, warnIngame = false, reason = "Compat for Quark")

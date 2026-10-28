@@ -8,7 +8,7 @@ import nischitweaker.Tags;
 public class RebornCoreConfig {
 
     @Config.Comment("Fixes a potential exploit in RebornCore")
-    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.Name("Exploit Fix: RebornCore (MixinToggle)")
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.reborncore.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "reborncore", desired = true, warnIngame = false, reason = "Compat for RebornCore")
