@@ -87,6 +87,7 @@ dependencies {
     implementation fg.deobf("curse.maven:locks-253456:3568569")
     implementation fg.deobf("curse.maven:iceandfire-rlcraft-888556:8350620")
 //    implementation fg.deobf("curse.maven:llibrary-243298:3116493")
+    compileOnly fg.deobf("curse.maven:llibrary-243298:3116493")
     implementation fg.deobf("curse.maven:nether-api-1306115:9129951")
     implementation fg.deobf("curse.maven:atomicstrykers-infernal-mobs-227875:3431758")
     implementation fg.deobf("curse.maven:rlmixins-711730:8151138")
@@ -120,6 +121,15 @@ dependencies {
     implementation fg.deobf("curse.maven:level-up-251136:2763516")
     implementation fg.deobf("curse.maven:global-gamerules-227657:2654852")
     implementation fg.deobf("curse.maven:potioncore-242872:2905184")
+    implementation fg.deobf("curse.maven:chunkpregenerator-267193:3490718")
+    implementation fg.deobf("curse.maven:multi-mine-227887:2790649")
+    //curseforge jars have a duplicate entry that breaks deobf
+    compileOnly fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.709")
+    compileOnly fg.deobf("curse.maven:fancymenu-367706:4655936")
+    compileOnly fg.deobf("curse.maven:reborncore-237903:3330308")
+    compileOnly fg.deobf("curse.maven:nuclearcraft-mod-226254:6151363")
+    compileOnly fg.deobf("curse.maven:spartan-shields-252239:3567495")
+    compileOnly fg.deobf("curse.maven:battletowers-227877:2817288")
 }
 
 mixin {

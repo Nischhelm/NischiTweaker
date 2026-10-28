@@ -128,6 +128,27 @@ public class ConfigHandler {
 	@Config.Name("Quality Tools")
 	public static QualityToolsConfig qualitytools = new QualityToolsConfig();
 
+	@Config.Name("FancyMenu")
+	public static FancyMenuConfig fancymenu = new FancyMenuConfig();
+
+	@Config.Name("RebornCore")
+	public static RebornCoreConfig reborncore = new RebornCoreConfig();
+
+	@Config.Name("NuclearCraft")
+	public static NuclearCraftConfig nuclearcraft = new NuclearCraftConfig();
+
+	@Config.Name("Spartan Shields")
+	public static SpartanShieldsConfig spartanshields = new SpartanShieldsConfig();
+
+	@Config.Name("Battle Towers")
+	public static BattleTowersConfig battletowers = new BattleTowersConfig();
+
+	@Config.Name("Multi Mine")
+	public static MultiMineConfig multimine = new MultiMineConfig();
+
+	@Config.Name("Chunk Pregenerator")
+	public static ChunkPregeneratorConfig chunkpregenerator = new ChunkPregeneratorConfig();
+
 	@Config.Name("Minecraft")
 	public static VanillaConfig vanilla = new VanillaConfig();
 

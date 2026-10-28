@@ -19,4 +19,11 @@ public class LevelUp2Config {
             reason = "Requires mod to properly function"
     )
     public boolean fixStealth = true;
+
+    @Config.Comment("Fixes a potential exploit in Level Up! Reloaded")
+    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.levelup2.exploitfix.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "levelup2", targetVersionRange = "(,1.1.23]", desired = true, warnIngame = false, reason = "Compat for Level Up! Reloaded")
+    public boolean exploitFix = true;
 }

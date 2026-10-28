@@ -54,7 +54,6 @@ public class NischiTweakerPlugin implements IFMLLoadingPlugin {
         CompatUtil.conditionallyAddMixin("mixin.nischitweaker.locks.lockpickstrengths.json", true, ConfigHandler.locks.lockPickStrengths.keySet(), "locks");
         CompatUtil.conditionallyAddMixin("mixin.nischitweaker.locks.lockstats.json", true, ConfigHandler.locks.lockStats.keySet(), "locks");
         CompatUtil.conditionallyAddMixin("mixin.nischitweaker.globalgamerules.appliedrules.json", true, ConfigHandler.globalgamerules.appliedGameRules, "globalgamerules");
-
 		CompatUtil.conditionallyAddMixin("mixin.nischitweaker.locks.devgetitems.early.json", false, CompatUtil::isDev, "locks");
 		CompatUtil.conditionallyAddMixin("mixin.nischitweaker.grapplinghook.devcaptureposition.json", true, CompatUtil::isDev, "grapplemod");
 		if(CompatUtil.isDev() && FermiumJarScanner.isModPresent("bloodmoon"))

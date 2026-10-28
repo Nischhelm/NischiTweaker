@@ -22,4 +22,11 @@ public class ReskillableConfig {
     })
     @Config.Name("Golden Osmosis Repairable Items")
     public Set<String> goldenOsmosisRepairableItems = new LinkedHashSet<>();
+
+    @Config.Comment("Fixes a potential exploit in Reskillable")
+    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.reskillable.exploitfix.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "reskillable", desired = true, warnIngame = false, reason = "Compat for Reskillable")
+    public boolean exploitFix = true;
 }

@@ -12,4 +12,11 @@ public class GrapplingHookConfig {
     @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.grapplinghook.cooldown.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "grapplemod", desired = true, warnIngame = false, reason = "Compat for Grappling Hook Mod")
     public boolean enderStaffCooldown = true;
+
+    @Config.Comment("Fixes a potential exploit in Grappling Hook Mod")
+    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.grapplinghook.exploitfix.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "grapplemod", desired = true, warnIngame = false, reason = "Compat for Grappling Hook Mod")
+    public boolean exploitFix = true;
 }

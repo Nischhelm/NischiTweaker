@@ -32,4 +32,11 @@ public class CherryOnConfig {
     @MixinConfig.CompatHandling(modid = "suikecherry", desired = true, warnIngame = false, reason = "Compat for Cherry On")
     @MixinConfig.CompatHandling(modid = "rtg", desired = true, warnIngame = false, reason = "Compat for Cherry On x RTG")
     public boolean fixRTGBiomeName = true;
+
+    @Config.Comment("Fixes a potential exploit in Cherry On")
+    @Config.Name("Exploit Fix (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixin.nischitweaker.suikecherry.exploitfix.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "suikecherry", desired = true, warnIngame = false, reason = "Compat for Cherry On")
+    public boolean exploitFix = true;
 }
