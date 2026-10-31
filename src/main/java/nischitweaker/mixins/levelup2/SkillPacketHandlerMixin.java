@@ -8,6 +8,7 @@ import levelup2.config.LevelUpConfig;
 import levelup2.network.SkillPacketHandler;
 import levelup2.player.IPlayerClass;
 import levelup2.skills.SkillRegistry;
+import levelup2.util.SkillProperties;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -49,22 +50,25 @@ public abstract class SkillPacketHandlerMixin {
             int current = properties.getSkillLevel(entry.getKey());
             int target = entry.getValue();
             if (target == current) continue;
-            if (target < current || target > skill.getMaxLevel() || !skill.isEnabled()) {
+            SkillProperties skillProperties = nischitweaker$getProperties(skill);
+            int maxLevel = skillProperties != null ? skillProperties.getLevels().length : skill.getMaxLevel();
+            if (target < current || target > maxLevel || !nischitweaker$isEnabled(skill)) {
                 nischitweaker$reject(player, "invalid level " + target + " for " + entry.getKey());
                 return;
             }
             for (int level = current; level < target; level++) {
-                int levelCost = skill.getLevelCost(level);
+                int levelCost = skillProperties != null ? skillProperties.getLevels()[level] : skill.getLevelCost(level);
                 if (levelCost < 0) {
                     nischitweaker$reject(player, "locked skill " + entry.getKey());
                     return;
                 }
                 cost += levelCost;
             }
-            if (skill.getPrerequisites() != null) {
-                for (String prerequisite : skill.getPrerequisites()) {
+            String[] prerequisites = skillProperties != null ? skillProperties.getPrerequisites() : skill.getPrerequisites();
+            if (prerequisites != null) {
+                for (String prerequisite : prerequisites) {
                     IPlayerSkill check = SkillRegistry.getSkillFromName(prerequisite);
-                    if (check != null && check.isEnabled() && requested.getOrDefault(prerequisite, properties.getSkillLevel(prerequisite)) == 0) {
+                    if (check != null && nischitweaker$isEnabled(check) && requested.getOrDefault(prerequisite, properties.getSkillLevel(prerequisite)) == 0) {
                         nischitweaker$reject(player, "missing prerequisite " + prerequisite + " for " + entry.getKey());
                         return;
                     }
@@ -100,6 +104,18 @@ public abstract class SkillPacketHandlerMixin {
         }
 
         original.call(newClass, hasClass, player);
+    }
+
+    // json skill properties only get copied into the skill objects on the client (SkillProperties.fromNBT), a dedicated server only has them in the registry
+    @Unique
+    private static SkillProperties nischitweaker$getProperties(IPlayerSkill skill) {
+        return skill.hasExternalJson() ? SkillRegistry.getProperty(skill) : null;
+    }
+
+    @Unique
+    private static boolean nischitweaker$isEnabled(IPlayerSkill skill) {
+        SkillProperties skillProperties = nischitweaker$getProperties(skill);
+        return skillProperties != null ? skillProperties.isEnabled() : skill.isEnabled();
     }
 
     @Unique
