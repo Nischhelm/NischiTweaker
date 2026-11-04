@@ -54,7 +54,8 @@ public class LocksConfig {
             "Add the name to the Generated Locks lists in locks.cfg if the lock should generate on chests.",
             "Disable mixin by clearing the list",
             "By default adds a dragonbone lock with 12 pins.",
-            "For more locks you'll have to add a lang key, item model jsons (closed + open), item textures (closed + open) and a recipe json."
+            "For more locks you'll have to add a lang key, item model jsons (closed + open), item textures (closed + open) and a recipe json.",
+            "Note that the given pins are the pins a lock has when its CRAFTED. For the pins a lock is generated with on a chest in the world, use Locks own config."
     })
     @Config.Name("Lock Stats (MixinToggle)")
     @Config.RequiresMcRestart
