@@ -149,6 +149,9 @@ public class ConfigHandler {
 	@Config.Name("Chunk Pregenerator")
 	public static ChunkPregeneratorConfig chunkpregenerator = new ChunkPregeneratorConfig();
 
+	@Config.Name("The Lost Cities")
+	public static LostCitiesConfig lostcities = new LostCitiesConfig();
+
 	@Config.Name("Minecraft")
 	public static VanillaConfig vanilla = new VanillaConfig();
 

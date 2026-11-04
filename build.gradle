@@ -125,6 +125,7 @@ dependencies {
     implementation fg.deobf("curse.maven:potioncore-242872:2905184")
     implementation fg.deobf("curse.maven:chunkpregenerator-267193:3490718")
     implementation fg.deobf("curse.maven:multi-mine-227887:2790649")
+    implementation fg.deobf("curse.maven:the-lost-cities-269024:2861574")
     //curseforge jars have a duplicate entry that breaks deobf
     compileOnly fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.709")
     compileOnly fg.deobf("curse.maven:fancymenu-367706:4655936")
