@@ -7,6 +7,14 @@
     {
       "type": "forge:mod_loaded",
       "modid": "locks"
+    },
+    {
+      "type": "minecraft:item_exists",
+      "item": "locks:steel_lock_mechanism"
+    },
+    {
+      "type": "minecraft:item_exists",
+      "item": "locks:dragonbone_lock"
     }
   ],
   "type": "forge:ore_shaped",

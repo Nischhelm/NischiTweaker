@@ -7,6 +7,14 @@
     {
       "type": "forge:mod_loaded",
       "modid": "charm"
+    },
+    {
+      "type": "minecraft:item_exists",
+      "item": "xpbook:xp_book"
+    },
+    {
+      "type": "minecraft:item_exists",
+      "item": "xpbook:greater_xp_book"
     }
   ],
   "type": "forge:ore_shaped",
