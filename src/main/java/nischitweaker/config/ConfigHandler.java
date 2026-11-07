@@ -152,6 +152,9 @@ public class ConfigHandler {
 	@Config.Name("The Lost Cities")
 	public static LostCitiesConfig lostcities = new LostCitiesConfig();
 
+	@Config.Name("Charm")
+	public static CharmConfig charm = new CharmConfig();
+
 	@Config.Name("Minecraft")
 	public static VanillaConfig vanilla = new VanillaConfig();
 
