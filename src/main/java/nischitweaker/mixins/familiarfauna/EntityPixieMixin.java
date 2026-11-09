@@ -9,14 +9,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(EntityPixie.class)
 public abstract class EntityPixieMixin {
 
-    /**
-     * Modify pixie spawning max height
-     */
-    @ModifyExpressionValue(
-            method = "getCanSpawnHere",
-            at = @At(value = "CONSTANT", args = "intValue=90"),
-            remap = false
-    )
+    // Modify pixie spawning max height
+    @ModifyExpressionValue(method = "getCanSpawnHere", at = @At(value = "CONSTANT", args = "intValue=90"))
     private int nischitweaker_modifyPixieSpawningMaxHeight(int original) {
         return ConfigHandler.familiarfauna.pixieMaxSpawnHeight;
     }
