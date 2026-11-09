@@ -82,4 +82,24 @@ public class EnchanterToolsConfig {
     @MixinConfig.CompatHandling(modid = "enchanter_tools", targetVersionRange = "1.1.1a", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
     @Order(8)
     public boolean fixMinEnchantLvl = true;
+
+    @Config.Comment({
+            "Lets SoManyEnchantments' Upgraded Potentials be applied to Enchanted Inkwells like a normal enchantment in the anvil, instead of requiring the inkwell to already be enchanted.",
+            "Note: The inkwell still needs to be an allowed item for Upgraded Potentials (SME Can Apply Anvil config or EnchantmentControl item types)."
+    })
+    @Config.Name("Inkwell Accepts Upgraded Potentials (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.somanyenchantments.inkwellupgradedpotentials.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "enchanter_tools", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
+    @MixinConfig.CompatHandling(modid = "somanyenchantments", targetVersionRange = "[1.0.0,)", desired = true, warnIngame = false, reason = "Compat for SoManyEnchantments")
+    @Order(9)
+    public boolean inkwellUpgradedPotentials = true;
+
+    @Config.Comment("Lets already enchanted Enchanted Inkwells accept more enchantments in the anvil.")
+    @Config.Name("Inkwell Accepts Multiple Enchants (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.enchantertools.inkwell.multienchant.json", defaultValue = true)
+    @MixinConfig.CompatHandling(modid = "enchanter_tools", desired = true, warnIngame = false, reason = "Compat for Enchanter Tools")
+    @Order(10)
+    public boolean inkwellMultipleEnchants = true;
 }

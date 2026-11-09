@@ -78,6 +78,7 @@ dependencies {
     implementation fg.deobf("curse.maven:baubles-227083:2518667")
     implementation fg.deobf("curse.maven:distant-horizons-508933:9004743")
     implementation fg.deobf("curse.maven:enchanter-tools-1590477:8803331")
+    implementation fg.deobf("curse.maven:new-so-many-enchantments-267035:7156865")
     implementation fg.deobf("curse.maven:rltweaker2-734347:6518808")
     implementation fg.deobf("curse.maven:bloodmoon-226321:2537917")
     implementation fg.deobf("curse.maven:inspirations-284007:2843007")
