@@ -39,6 +39,16 @@ public class VanillaConfig {
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.vanilla.corruptedleveldat.json", defaultValue = true)
     public boolean backupCorruptedLevelDat = true;
 
+    @Config.Comment({
+            "Repairing two items in a crafting grid gives back each input's container item.",
+            "For repairable items that have one (like No Tree Punching saws) this keeps both inputs in the grid, duping them.",
+            "This makes the repair recipe consume both inputs fully."
+    })
+    @Config.Name("Fix Repair Recipe Container Item Dupe (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.vanilla.repaircontaineritems.json", defaultValue = true)
+    public boolean fixRepairContainerItems = true;
+
     //Own enum so the config doesn't load EnumDifficulty during coremod construction (obfuscated names aren't remapped yet)
     public enum Difficulty {
         PEACEFUL, EASY, NORMAL, HARD
