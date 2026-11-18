@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import srpmixins.SRPMixinsPlugin;
+import srpmixins.config.ConfigHandler;
 
 @Mixin(BloodmoonHandler.class)
 public abstract class BloodmoonHandlerMixin_LostCitiesParasites {
@@ -26,7 +26,7 @@ public abstract class BloodmoonHandlerMixin_LostCitiesParasites {
     )
     private void nischitweaker_spawnParasites(TickEvent.WorldTickEvent event, CallbackInfo ci, @Local World world) {
         if (world.isRemote || !SRPConfigSystems.useEvolution || !SRPConfigSystems.phaseCustomSpawner) return;
-        if (SRPMixinsPlugin.isFixSpawningEntirelyEnabled()) return;
+        if (ConfigHandler.fixes.spawning.fixSpawningEntirely) return;
         SRPWorldEntitySpawner.findChunksForSpawning((WorldServer) world, true, false, world.getTotalWorldTime() % 400L == 0L);
     }
 }

@@ -63,8 +63,6 @@ dependencies {
     compileOnly "io.github.llamalad7:mixinextras-common:${mixin_extras_version}"
     annotationProcessor "io.github.llamalad7:mixinextras-common:${mixin_extras_version}"
 
-    //1.6.4 isn't released yet, needed for indev runs. Built from the FermiumBooter repo
-//    implementation fg.deobf("libs:FermiumBooter:1.6.4-indev")
     implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
     implementation fg.deobf("curse.maven:betterconfig-${betterconfig_version}")
     implementation 'io.github.meldexun:asmutil:2.8.1'
@@ -100,7 +98,7 @@ dependencies {
     implementation fg.deobf("curse.maven:bountiful-baubles-313536:3568240")
     implementation fg.deobf("curse.maven:familiar-fauna-289347:2644656")
     implementation fg.deobf("curse.maven:srparasites-348025:5370258")
-    implementation fg.deobf("curse.maven:srp-mixins-1119777:8543546")
+    implementation fg.deobf("curse.maven:srp-mixins-1119777:9741646")
     implementation fg.deobf("curse.maven:autoreglib-250363:2746011")
     implementation fg.deobf("curse.maven:wolf-armor-and-storage-253689:3648545")
     implementation fg.deobf("curse.maven:simple-difficulty-360779:3613814")
