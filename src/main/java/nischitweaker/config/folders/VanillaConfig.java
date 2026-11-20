@@ -12,6 +12,7 @@ public class VanillaConfig {
     static {
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.vanilla.frostwalkermulti.json", () -> ConfigHandler.vanilla.frostWalkerMulti != 1F);
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.vanilla.newworlddifficulty.json", () -> ConfigHandler.vanilla.newWorldDifficulty != Difficulty.NORMAL);
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.srparasites.cylindricaldespawn.json", () -> ConfigHandler.vanilla.cylindricalDespawn, "srparasites");
     }
 
     @Config.Comment({
@@ -66,6 +67,16 @@ public class VanillaConfig {
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.vanilla.ridingsprint.json", defaultValue = true)
     public boolean stopSprintingWhileRiding = true;
+
+    @Config.Comment({
+            "Mobs only check the horizontal distance to the closest player for despawning, like mob spawning does.",
+            "Without this, mobs on the ground despawn instantly while a player is more than 128 blocks above them.",
+            "Also applies to SRParasites' own despawn logic if it is installed"
+    })
+    @Config.Name("Cylindrical Despawn Distance (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.vanilla.cylindricaldespawn.json", defaultValue = false)
+    public boolean cylindricalDespawn = false;
 
     //Own enum so the config doesn't load EnumDifficulty during coremod construction (obfuscated names aren't remapped yet)
     public enum Difficulty {
