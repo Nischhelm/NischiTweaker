@@ -1,17 +1,22 @@
 package nischitweaker.config.folders;
 
 import fermiumbooter.annotations.MixinConfig;
+import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import nischitweaker.MixinUtil;
 import nischitweaker.Tags;
+import nischitweaker.config.ConfigFolder;
 import nischitweaker.config.ConfigHandler;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @MixinConfig(name = Tags.MODID, classloadEarly = true)
-public class EBWizardryConfig {
+public class EBWizardryConfig extends ConfigFolder {
 
     static {
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.ebwizardry.unbreakableblocks.json", () -> ConfigHandler.ebwizardry.wizardryUnbreakableBlocks, "ebwizardry");
@@ -72,4 +77,23 @@ public class EBWizardryConfig {
             "minecraft:mob_spawner",
             "minecraft:chest"
     ));
+
+    private final Set<Block> unbreakableBlocks = new HashSet<>();
+
+    public EBWizardryConfig() {
+        super("ebwizardry");
+    }
+
+    @Override
+    protected void updateConfig() {
+        unbreakableBlocks.clear();
+        for (String name : wizardryUnbreakableBlocks) {
+            ResourceLocation loc = new ResourceLocation(name.trim());
+            if (ForgeRegistries.BLOCKS.containsKey(loc)) unbreakableBlocks.add(ForgeRegistries.BLOCKS.getValue(loc));
+        }
+    }
+
+    public boolean isWizardryUnbreakable(Block block) {
+        return unbreakableBlocks.contains(block);
+    }
 }

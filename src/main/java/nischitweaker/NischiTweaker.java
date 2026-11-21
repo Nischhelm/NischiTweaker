@@ -28,4 +28,9 @@ public class NischiTweaker {
             MinecraftForge.EVENT_BUS.register(BucketedBookWyrm.class);
         }
     }
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        ConfigHandler.updateFolders();
+    }
 }

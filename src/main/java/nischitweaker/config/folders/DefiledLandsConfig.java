@@ -1,14 +1,23 @@
 package nischitweaker.config.folders;
 
 import meldexun.betterconfig.api.Order;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import nischitweaker.config.ConfigFolder;
 
-public class DefiledLandsConfig {
+public class DefiledLandsConfig extends ConfigFolder {
 
     @Config.Name("Book Wyrm in a Bucket")
     public BookWyrmBucketConfig bookwyrmBucket = new BookWyrmBucketConfig();
 
-    public static class BookWyrmBucketConfig {
+    public DefiledLandsConfig() {
+        super("defiledlands");
+    }
+
+    public static class BookWyrmBucketConfig extends ConfigFolder {
 
         @Config.Comment({
                 "Adds a Book Wyrm in a Bucket. Right click an adult Book Wyrm with an empty bucket (see \"Book Wyrm Bucket Item\") to catch it.",
@@ -52,5 +61,25 @@ public class DefiledLandsConfig {
         @Config.RangeDouble(min = 0, max = 1)
         @Order(5)
         public float escapeChance = 0.01F;
+
+        private Item bucket;
+        private int bucketMeta;
+
+        @Override
+        protected void updateConfig() {
+            bucket = null;
+            String[] split = bucketItem.trim().split(":");
+            if (split.length < 2) return;
+            try {
+                bucketMeta = split.length < 3 ? -1 : Integer.parseInt(split[2]);
+            } catch (NumberFormatException e) {
+                return;
+            }
+            bucket = ForgeRegistries.ITEMS.getValue(new ResourceLocation(split[0], split[1]));
+        }
+
+        public boolean isBucketItem(ItemStack stack) {
+            return bucket != null && stack.getItem() == bucket && (bucketMeta == -1 || stack.getMetadata() == bucketMeta);
+        }
     }
 }

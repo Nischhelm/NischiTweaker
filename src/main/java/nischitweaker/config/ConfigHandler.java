@@ -21,7 +21,8 @@ import org.apache.maven.artifact.versioning.ArtifactVersion;
 		removeDeprecatedEntries = true
 )
 @LoadEarly
-public class ConfigHandler {
+public class ConfigHandler extends ConfigFolder {
+	private static final ConfigHandler mainFolder = new ConfigHandler();
 
 	@Config.Name("In Control!")
 	public static InControlConfig incontrol = new InControlConfig();
@@ -177,8 +178,14 @@ public class ConfigHandler {
 	private static class EventHandler{
 		@SubscribeEvent
 		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-			if(event.getModID().equals(Tags.MODID))
+			if(event.getModID().equals(Tags.MODID)) {
 				BetterConfigManager.sync(Tags.MODID);
+				updateFolders();
+			}
 		}
+	}
+
+	public static void updateFolders() {
+		mainFolder.update();
 	}
 }

@@ -14,7 +14,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
@@ -90,16 +89,6 @@ public class BucketedBookWyrm {
     private static boolean isEmptyBucket(ItemStack stack) {
         if (stack.isEmpty()) return false;
         if (stack.hasTagCompound() && !stack.getTagCompound().isEmpty()) return false;
-
-        String[] split = ConfigHandler.defiledlands.bookwyrmBucket.bucketItem.trim().split(":");
-        if (split.length < 2) return false;
-        Item bucketItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(split[0], split[1]));
-        if (bucketItem == null || stack.getItem() != bucketItem) return false;
-        if (split.length < 3) return true;
-        try {
-            return stack.getMetadata() == Integer.parseInt(split[2]);
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        return ConfigHandler.defiledlands.bookwyrmBucket.isBucketItem(stack);
     }
 }

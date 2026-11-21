@@ -1,16 +1,21 @@
 package nischitweaker.config.folders;
 
 import fermiumbooter.annotations.MixinConfig;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import nischitweaker.MixinUtil;
 import nischitweaker.Tags;
+import nischitweaker.config.ConfigFolder;
 import nischitweaker.config.ConfigHandler;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @MixinConfig(name = Tags.MODID, classloadEarly = true)
-public class ReskillableConfig {
+public class ReskillableConfig extends ConfigFolder {
 
     static {
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.reskillable.goldenosmosis.json", () -> ConfigHandler.reskillable.goldenOsmosisRepairableItems, "reskillable");
@@ -35,4 +40,23 @@ public class ReskillableConfig {
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.reskillable.exploitfix.json", defaultValue = true)
     @MixinConfig.CompatHandling(modid = "reskillable", desired = true, warnIngame = false, reason = "Compat for Reskillable")
     public boolean exploitFix = true;
+
+    private final Set<Item> osmosisRepairableItems = new HashSet<>();
+
+    public ReskillableConfig() {
+        super("reskillable");
+    }
+
+    @Override
+    protected void updateConfig() {
+        osmosisRepairableItems.clear();
+        for (String name : goldenOsmosisRepairableItems) {
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(name.trim()));
+            if (item != null) osmosisRepairableItems.add(item);
+        }
+    }
+
+    public boolean isOsmosisRepairable(Item item) {
+        return osmosisRepairableItems.contains(item);
+    }
 }
