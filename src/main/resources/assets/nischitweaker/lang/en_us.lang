@@ -10,6 +10,9 @@ item.nischitweaker.bucketed_bookwyrm.cooldown=Digesting for %ss
 item.nischitweaker.bucketed_bookwyrm.tooltip=Feed enchanted books in a crafting grid.
 item.nischitweaker.bucketed_bookwyrm.escaped=Your Book Wyrm hopped out of its bucket!
 
+tile.nischitweaker.infested_bed.name=Infested Bed
+nischitweaker.msg.infestedbed.incomplete=The bed pulses, but the ritual around it is incomplete
+
 tile.nischitweaker.anti_lure.name=Anti-Lure
 tile.nischitweaker.anti_lure_1.name=Anti-Lure (§4Weakened§f)
 tile.nischitweaker.anti_lure_2.name=Anti-Lure (§cFaint§f)

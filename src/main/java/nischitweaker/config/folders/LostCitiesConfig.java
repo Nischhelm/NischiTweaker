@@ -32,6 +32,17 @@ public class LostCitiesConfig {
     public boolean luresBecomeNidus = false;
 
     @Config.Comment({
+            "Adds an Infested Bed that teleports to and from the Lost Cities dimension when right clicked, ignoring the Portal Phase Lock",
+            "It needs the same setup as a Lost Cities portal bed (\"specialBedBlock\" below it and skulls around it), but works in any dimension including the End",
+            "Breaking it drops nothing"
+    })
+    @Config.Name("Infested Portal Bed (MixinToggle)")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.lostcities.infestedbed.json", defaultValue = false)
+    @MixinConfig.CompatHandling(modid = "lostcities", desired = true, warnIngame = false, reason = "Compat for The Lost Cities")
+    public boolean infestedPortalBed = false;
+
+    @Config.Comment({
             "Lost Cities portals (sleeping in a bed) are locked until the player reaches this SRP evolution phase",
             "Disable mixin by setting to -1 (requires restart)"
     })

@@ -10,6 +10,7 @@ import nischitweaker.features.antilure.AntiLure;
 import nischitweaker.features.antilure.AntiLureClient;
 import nischitweaker.features.antilure.ParasiteMelting;
 import nischitweaker.features.bookwyrmbucket.BucketedBookWyrm;
+import nischitweaker.features.infestedbed.InfestedBed;
 import nischitweaker.network.PacketHandler;
 
 @Mod(
@@ -29,6 +30,9 @@ public class NischiTweaker {
             MinecraftForge.EVENT_BUS.register(GreaterXPTome.class);
         if(BucketedBookWyrm.isEnabled()) {
             MinecraftForge.EVENT_BUS.register(BucketedBookWyrm.class);
+        }
+        if(InfestedBed.isEnabled()) {
+            MinecraftForge.EVENT_BUS.register(InfestedBed.class);
         }
         if(AntiLure.isEnabled()) {
             MinecraftForge.EVENT_BUS.register(AntiLure.class);

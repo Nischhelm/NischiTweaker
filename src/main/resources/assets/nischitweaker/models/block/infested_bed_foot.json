@@ -1,0 +1,241 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "minecraft:blocks/planks_oak",
+    "bed": "minecraft:entity/bed/white",
+    "stains": "nischitweaker:blocks/infested_bed_stains"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        3,
+        0
+      ],
+      "to": [
+        16,
+        9,
+        16
+      ],
+      "faces": {
+        "up": {
+          "texture": "#bed",
+          "uv": [
+            1.5,
+            7,
+            5.5,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#bed",
+          "uv": [
+            5.5,
+            7,
+            9.5,
+            5.5
+          ]
+        },
+        "east": {
+          "texture": "#bed",
+          "uv": [
+            5.5,
+            7,
+            7,
+            11
+          ],
+          "rotation": 90
+        },
+        "west": {
+          "texture": "#bed",
+          "uv": [
+            1.5,
+            11,
+            0,
+            7
+          ],
+          "rotation": 90
+        },
+        "down": {
+          "texture": "#bed",
+          "uv": [
+            11,
+            11,
+            7,
+            7
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        -0.05,
+        3,
+        0
+      ],
+      "to": [
+        16.05,
+        9.05,
+        16.05
+      ],
+      "faces": {
+        "up": {
+          "texture": "#stains",
+          "uv": [
+            1.5,
+            7,
+            5.5,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#stains",
+          "uv": [
+            5.5,
+            7,
+            9.5,
+            5.5
+          ]
+        },
+        "east": {
+          "texture": "#stains",
+          "uv": [
+            5.5,
+            7,
+            7,
+            11
+          ],
+          "rotation": 90
+        },
+        "west": {
+          "texture": "#stains",
+          "uv": [
+            1.5,
+            11,
+            0,
+            7
+          ],
+          "rotation": 90
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        13
+      ],
+      "to": [
+        3,
+        3,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            0.75,
+            14,
+            1.5
+          ]
+        },
+        "east": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            0.75,
+            14,
+            1.5
+          ]
+        },
+        "south": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            0.75,
+            14,
+            1.5
+          ]
+        },
+        "west": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            0.75,
+            14,
+            1.5
+          ]
+        },
+        "down": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            0.75,
+            14,
+            1.5
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        13,
+        0,
+        13
+      ],
+      "to": [
+        16,
+        3,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            3.75,
+            14,
+            4.5
+          ]
+        },
+        "east": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            3.75,
+            14,
+            4.5
+          ]
+        },
+        "south": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            3.75,
+            14,
+            4.5
+          ]
+        },
+        "west": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            3.75,
+            14,
+            4.5
+          ]
+        },
+        "down": {
+          "texture": "#bed",
+          "uv": [
+            13.25,
+            3.75,
+            14,
+            4.5
+          ]
+        }
+      }
+    }
+  ]
+}
