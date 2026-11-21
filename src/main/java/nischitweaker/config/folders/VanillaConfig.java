@@ -12,6 +12,7 @@ public class VanillaConfig {
     static {
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.vanilla.frostwalkermulti.json", () -> ConfigHandler.vanilla.frostWalkerMulti != 1F);
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.vanilla.newworlddifficulty.json", () -> ConfigHandler.vanilla.newWorldDifficulty != Difficulty.NORMAL);
+        MixinUtil.conditionallyAddMixin("mixin.nischitweaker.vanilla.boatfallbreak.json", () -> ConfigHandler.vanilla.boatFallBreak != BoatFallBreak.DISABLE_MIXIN);
         MixinUtil.conditionallyAddMixin("mixin.nischitweaker.srparasites.cylindricaldespawn.json", () -> ConfigHandler.vanilla.cylindricalDespawn, "srparasites");
     }
 
@@ -30,6 +31,9 @@ public class VanillaConfig {
     })
     @Config.Name("New World Difficulty")
     public Difficulty newWorldDifficulty = Difficulty.NORMAL;
+    public enum Difficulty { //Own enum so the config doesn't load EnumDifficulty during coremod construction (obfuscated names aren't remapped yet)
+        PEACEFUL, EASY, NORMAL, HARD
+    }
 
     @Config.Comment({
             "If level.dat or level.dat_old fail to load, keep a copy of them as level.dat_corrupted_<date> / level.dat_old_corrupted_<date>.",
@@ -69,6 +73,19 @@ public class VanillaConfig {
     public boolean stopSprintingWhileRiding = true;
 
     @Config.Comment({
+            "Fixes MC-119369: boats breaking when falling specific distances (like 12, 13, 49 or 51 blocks).",
+            "Imagine Matt Parker from Stand-up Maths reporting a bug in minecraft: https://www.youtube.com/watch?v=ei58gGM9Z8k",
+            "NO_BREAK: boats never break from falling. ALWAYS_BREAK: boats always break when falling more than 3 blocks onto land, like in 1.8",
+            "DISABLE_MIXIN: vanilla behaviour"
+    })
+    @Config.Name("Boat Fall Breaking")
+    @Config.RequiresMcRestart
+    public BoatFallBreak boatFallBreak = BoatFallBreak.NO_BREAK;
+    public enum BoatFallBreak {
+        DISABLE_MIXIN, NO_BREAK, ALWAYS_BREAK
+    }
+
+    @Config.Comment({
             "Mobs only check the horizontal distance to the closest player for despawning, like mob spawning does.",
             "Without this, mobs on the ground despawn instantly while a player is more than 128 blocks above them.",
             "Also applies to SRParasites' own despawn logic if it is installed"
@@ -77,9 +94,4 @@ public class VanillaConfig {
     @Config.RequiresMcRestart
     @MixinConfig.MixinToggle(mixinJson = "mixin.nischitweaker.vanilla.cylindricaldespawn.json", defaultValue = false)
     public boolean cylindricalDespawn = false;
-
-    //Own enum so the config doesn't load EnumDifficulty during coremod construction (obfuscated names aren't remapped yet)
-    public enum Difficulty {
-        PEACEFUL, EASY, NORMAL, HARD
-    }
 }
