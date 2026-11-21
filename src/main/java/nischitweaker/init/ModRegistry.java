@@ -15,18 +15,18 @@ import nischitweaker.features.bookwyrmbucket.BucketedBookWyrm;
 public class ModRegistry {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        BucketedBookWyrm.registerItems(event);
+        if (BucketedBookWyrm.isEnabled()) BucketedBookWyrm.registerItems(event);
     }
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        BucketedBookWyrm.registerRecipes(event);
-        GreaterXPTome.registerRecipes(event);
+        if (BucketedBookWyrm.isEnabled()) BucketedBookWyrm.registerRecipes(event);
+        if (GreaterXPTome.isEnabled()) GreaterXPTome.registerRecipes(event);
     }
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent event) {
-        BucketedBookWyrm.registerModels();
+        if (BucketedBookWyrm.isEnabled()) BucketedBookWyrm.registerModels();
     }
 }

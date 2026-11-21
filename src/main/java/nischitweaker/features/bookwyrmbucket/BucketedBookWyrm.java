@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,6 +23,10 @@ import nischitweaker.config.ConfigHandler;
 
 public class BucketedBookWyrm {
     public static Item ITEM;
+
+    public static boolean isEnabled() {
+        return Loader.isModLoaded("defiledlands") && ConfigHandler.defiledlands.bookwyrmBucket.bucketedBookWyrm;
+    }
 
     public static void registerItems(RegistryEvent.Register<Item> event) {
         ITEM = new ItemBucketedBookWyrm()

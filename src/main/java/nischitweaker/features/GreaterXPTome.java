@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -55,6 +56,10 @@ public class GreaterXPTome {
             String toRemove = I18n.translateToLocalFormatted("item.durability", stack.getMaxDamage() - stack.getItemDamage(), stack.getMaxDamage());
             event.getToolTip().removeIf(toRemove::equals);
         }
+    }
+
+    public static boolean isEnabled() {
+        return Loader.isModLoaded("xpbook") && !ConfigHandler.xptome.additionalTomes.isEmpty();
     }
 
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
