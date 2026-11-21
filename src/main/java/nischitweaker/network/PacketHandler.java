@@ -11,5 +11,6 @@ public class PacketHandler {
     public static void init() {
         int id = 0;
         INSTANCE.registerMessage(CreeperConfettiPacket.Handler.class, CreeperConfettiPacket.class, id++, Side.CLIENT);
+        INSTANCE.registerMessage(ParasiteMeltPacket.Handler.class, ParasiteMeltPacket.class, id++, Side.CLIENT);
     }
 }

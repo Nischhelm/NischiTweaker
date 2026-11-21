@@ -1,0 +1,42 @@
+{
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "srparasites:lurecomponent2"
+    },
+    {
+      "type": "minecraft:item_exists",
+      "item": "nischitweaker:anti_lure"
+    }
+  ],
+  "type": "forge:ore_shaped",
+  "group": "nischitweaker:anti_lure",
+  "pattern": [
+    "A A",
+    "QRQ",
+    "QQQ"
+  ],
+  "key": {
+    "A": {
+      "item": "srparasites:lurecomponent2"
+    },
+    "Q": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "blockQuartz"
+      },
+      {
+        "item": "minecraft:quartz_block",
+        "data": 32767
+      }
+    ],
+    "R": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "nischitweaker:anti_lure",
+    "data": 2,
+    "count": 1
+  }
+}

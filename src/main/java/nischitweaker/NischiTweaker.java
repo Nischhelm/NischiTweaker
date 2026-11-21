@@ -6,6 +6,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import nischitweaker.config.ConfigHandler;
 import nischitweaker.features.GreaterXPTome;
+import nischitweaker.features.antilure.AntiLure;
+import nischitweaker.features.antilure.AntiLureClient;
+import nischitweaker.features.antilure.ParasiteMelting;
 import nischitweaker.features.bookwyrmbucket.BucketedBookWyrm;
 import nischitweaker.network.PacketHandler;
 
@@ -26,6 +29,11 @@ public class NischiTweaker {
             MinecraftForge.EVENT_BUS.register(GreaterXPTome.class);
         if(BucketedBookWyrm.isEnabled()) {
             MinecraftForge.EVENT_BUS.register(BucketedBookWyrm.class);
+        }
+        if(AntiLure.isEnabled()) {
+            MinecraftForge.EVENT_BUS.register(AntiLure.class);
+            MinecraftForge.EVENT_BUS.register(ParasiteMelting.class);
+            if(event.getSide().isClient()) MinecraftForge.EVENT_BUS.register(AntiLureClient.class);
         }
     }
 
