@@ -2,7 +2,7 @@ package nischitweaker.mixins.bloodmoon;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import lumien.bloodmoon.handler.BloodmoonEventHandler;
-import nischitweaker.features.LostCitiesDimension;
+import nischitweaker.util.LostCitiesHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -15,7 +15,7 @@ public abstract class BloodmoonEventHandlerMixin_LostCities {
             remap = false
     )
     private int nischitweaker_lostCitiesAsOverworld_loadWorld(int original) {
-        return LostCitiesDimension.isLostCities(original) ? 0 : original;
+        return LostCitiesHelper.isLostCities(original) ? 0 : original;
     }
 
     @ModifyExpressionValue(
@@ -24,6 +24,6 @@ public abstract class BloodmoonEventHandlerMixin_LostCities {
             remap = false
     )
     private int nischitweaker_lostCitiesAsOverworld_livingUpdate(int original) {
-        return LostCitiesDimension.isLostCities(original) ? 0 : original;
+        return LostCitiesHelper.isLostCities(original) ? 0 : original;
     }
 }

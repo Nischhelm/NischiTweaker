@@ -11,7 +11,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import nischitweaker.features.LostCitiesDimension;
+import nischitweaker.util.LostCitiesHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,7 +29,7 @@ public abstract class BlockEvolutionLureMixin_LureNidus extends BlockBase {
             cancellable = true
     )
     private void nischitweaker_lureBecomesNidus(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<Boolean> cir) {
-        if (!LostCitiesDimension.isLostCities(playerIn.dimension)) return;
+        if (!LostCitiesHelper.isLostCities(playerIn.dimension)) return;
 
         playerIn.sendStatusMessage(new TextComponentTranslation("nischitweaker.msg.hivewhispers"), true);
         worldIn.setBlockState(pos, SRPBlocks.dodN.getDefaultState());

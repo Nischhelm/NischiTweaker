@@ -6,7 +6,7 @@ import lumien.bloodmoon.network.PacketHandler;
 import lumien.bloodmoon.network.messages.MessageBloodmoonStatus;
 import lumien.bloodmoon.server.BloodmoonHandler;
 import mcjty.lostcities.config.LostCityConfiguration;
-import nischitweaker.features.LostCitiesDimension;
+import nischitweaker.util.LostCitiesHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +23,7 @@ public abstract class BloodmoonHandlerMixin_LostCities {
             remap = false
     )
     private int nischitweaker_lostCitiesAsOverworld(int original) {
-        return LostCitiesDimension.isLostCities(original) ? 0 : original;
+        return LostCitiesHelper.isLostCities(original) ? 0 : original;
     }
 
     /**

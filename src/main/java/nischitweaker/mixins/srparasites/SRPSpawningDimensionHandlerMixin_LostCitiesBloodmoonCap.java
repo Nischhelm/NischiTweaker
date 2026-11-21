@@ -6,7 +6,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import lumien.bloodmoon.server.BloodmoonHandler;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import nischitweaker.config.ConfigHandler;
-import nischitweaker.features.LostCitiesDimension;
+import nischitweaker.util.LostCitiesHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,7 +34,7 @@ public abstract class SRPSpawningDimensionHandlerMixin_LostCitiesBloodmoonCap {
 
     @Unique
     private static int nischitweaker$multiply(int mobCap, LivingSpawnEvent.CheckSpawn event) {
-        if (!LostCitiesDimension.isLostCities(event.getWorld().provider.getDimension())) return mobCap;
+        if (!LostCitiesHelper.isLostCities(event.getWorld().provider.getDimension())) return mobCap;
         if (BloodmoonHandler.INSTANCE == null || !BloodmoonHandler.INSTANCE.isBloodmoonActive()) return mobCap;
         return (int) (mobCap * ConfigHandler.bloodmoon.lostCitiesParasiteCapMultiplier);
     }
