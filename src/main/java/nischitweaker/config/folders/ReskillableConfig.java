@@ -41,6 +41,7 @@ public class ReskillableConfig extends ConfigFolder {
     @MixinConfig.CompatHandling(modid = "reskillable", desired = true, warnIngame = false, reason = "Compat for Reskillable")
     public boolean exploitFix = true;
 
+    @Config.Ignore
     private final Set<Item> osmosisRepairableItems = new HashSet<>();
 
     public ReskillableConfig() {

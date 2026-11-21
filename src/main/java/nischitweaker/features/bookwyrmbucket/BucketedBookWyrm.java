@@ -15,6 +15,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
@@ -94,6 +95,25 @@ public class BucketedBookWyrm {
     private static boolean isEmptyBucket(ItemStack stack) {
         if (stack.isEmpty()) return false;
         if (stack.hasTagCompound() && !stack.getTagCompound().isEmpty()) return false;
-        return ConfigHandler.defiledlands.bookwyrmBucket.isBucketItem(stack);
+        return isBucketItem(stack);
+    }
+
+    private static Item bucket;
+    private static int bucketMeta;
+
+    public static void updateBucketItem() {
+        bucket = null;
+        String[] split = ConfigHandler.defiledlands.bookwyrmBucket.bucketItem.trim().split(":");
+        if (split.length < 2) return;
+        try {
+            bucketMeta = split.length < 3 ? -1 : Integer.parseInt(split[2]);
+        } catch (NumberFormatException e) {
+            return;
+        }
+        bucket = ForgeRegistries.ITEMS.getValue(new ResourceLocation(split[0], split[1]));
+    }
+
+    private static boolean isBucketItem(ItemStack stack) {
+        return bucket != null && stack.getItem() == bucket && (bucketMeta == -1 || stack.getMetadata() == bucketMeta);
     }
 }
