@@ -1,7 +1,9 @@
 package nischitweaker.features.bookwyrmbucket;
 
+import lykrast.defiledlands.common.init.ModItems;
 import lykrast.defiledlands.common.init.ModSounds;
 import lykrast.defiledlands.common.util.Config;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -154,6 +156,20 @@ public class ItemBucketedBookWyrm extends Item {
         return books;
     }
 
+    @SideOnly(Side.CLIENT)
+    public static boolean showStats() {
+        switch (ConfigHandler.defiledlands.bookwyrmBucket.statsTooltip) {
+            case ALWAYS: return true;
+            case NEVER: return false;
+            default:
+                EntityPlayer player = Minecraft.getMinecraft().player;
+                if (player == null) return false;
+                for (ItemStack stack : player.inventory.mainInventory) if (stack.getItem() == ModItems.bookWyrmAnalyzer) return true;
+                for (ItemStack stack : player.inventory.offHandInventory) if (stack.getItem() == ModItems.bookWyrmAnalyzer) return true;
+                return false;
+        }
+    }
+
     // Eating sound, same as feeding the entity
     @Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
@@ -242,7 +258,7 @@ public class ItemBucketedBookWyrm extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
-        if (BucketedBookWyrmClient.showStats()) {
+        if (showStats()) {
             String base = "ui.defiledlands.book_wyrm_analyze.";
             tooltip.add(TextFormatting.GRAY + I18n.format(base + "max_level", getMaxLevel(stack)));
             tooltip.add(TextFormatting.GRAY + I18n.format(base + "digest_time", getDigestTime(stack)));
@@ -270,7 +286,7 @@ public class ItemBucketedBookWyrm extends Item {
         NBTTagCompound tag = stack.getTagCompound();
         if (tag == null || !tag.hasKey(COOLDOWN_END_KEY)) return 0;
         if (FMLCommonHandler.instance().getSide() != Side.CLIENT) return 0;
-        World world = BucketedBookWyrmClient.getClientWorld();
+        World world = Minecraft.getMinecraft().world;
         return world == null ? 0 : Math.max(0, tag.getLong(COOLDOWN_END_KEY) - world.getTotalWorldTime());
     }
 }

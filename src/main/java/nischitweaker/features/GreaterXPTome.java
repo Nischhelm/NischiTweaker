@@ -57,8 +57,7 @@ public class GreaterXPTome {
         }
     }
 
-    @SubscribeEvent
-    public static void onRecipe(RegistryEvent.Register<IRecipe> event) {
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         ConfigHandler.xptome.additionalTomes.keySet().forEach(name -> {
             IRecipe original = event.getRegistry().getValue(new ResourceLocation(Tags.MODID, name));
             if(!(original instanceof ShapedOreRecipe)) {

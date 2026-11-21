@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import nischitweaker.config.ConfigHandler;
 import nischitweaker.features.GreaterXPTome;
 import nischitweaker.features.bookwyrmbucket.BucketedBookWyrm;
-import nischitweaker.features.bookwyrmbucket.BucketedBookWyrmClient;
 import nischitweaker.network.PacketHandler;
 
 @Mod(
@@ -27,7 +26,6 @@ public class NischiTweaker {
             MinecraftForge.EVENT_BUS.register(GreaterXPTome.class);
         if(Loader.isModLoaded("defiledlands") && ConfigHandler.defiledlands.bookwyrmBucket.bucketedBookWyrm) {
             MinecraftForge.EVENT_BUS.register(BucketedBookWyrm.class);
-            if(event.getSide().isClient()) MinecraftForge.EVENT_BUS.register(BucketedBookWyrmClient.class);
         }
     }
 }
