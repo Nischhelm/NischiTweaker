@@ -165,6 +165,9 @@ public class ConfigHandler extends ConfigFolder {
 	@Config.Name("Better Survival")
 	public static BetterSurvivalConfig bettersurvival = new BetterSurvivalConfig();
 
+	@Config.Name("Waystones")
+	public static WaystonesConfig waystones = new WaystonesConfig();
+
 	@Config.Name("Minecraft")
 	public static VanillaConfig vanilla = new VanillaConfig();
 
